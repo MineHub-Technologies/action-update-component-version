@@ -9,7 +9,7 @@ inputs:
     required: true
   destination_folder:
     description: 'Directory in destination repo'
-    required: true
+    required: false
     default: '.'
   destination_branch:
     description: 'Branch in destination repo to push changes to (default `development`)'
@@ -34,7 +34,6 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.source }}
     - ${{ inputs.destination_repo }}
     - ${{ inputs.destination_folder }}
     - ${{ inputs.deploy_key }}
