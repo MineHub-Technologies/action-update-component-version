@@ -1,32 +1,14 @@
 name: "Update component version"
 description: "Updates the version of a specific component"
 inputs:
-  deploy_key:
-    description: 'Private SSH key. Public key must be added to the destination repostitory as a deploy key with push access'
+  component_folder:
+    description: 'Directory in destination repo for the component that requires a version update'
     required: true
-  destination_repo:
-    description: 'Git repository to create PR in'
-    required: true
-  destination_folder:
-    description: 'Directory in destination repo'
-    required: false
     default: '.'
-  destination_branch:
-    description: 'Branch in destination repo to push changes to (default `development`)'
-    required: false
-    default: 'development'
-  git_username:
-    description: 'Git username'
-    required: false
-    default: ${{ github.actor }}
-  git_email:
-    description: 'Git email address'
-    required: false
-    default: ${{ github.actor }}
-  commit_message:
-    description: 'Commit message'
-    required: false
-    default: "${{ github.job }} ..."
+  version:
+    description: 'The version it should update to'
+    required: true
+    default: '.'
 outputs:
   commit_hash:
     description: 'The SHA hash of the generated commit'
@@ -34,9 +16,5 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.destination_repo }}
-    - ${{ inputs.destination_folder }}
-    - ${{ inputs.deploy_key }}
-    - ${{ inputs.git_username }}
-    - ${{ inputs.git_email }}
-    - ${{ inputs.commit_message }}
+    - ${{ inputs.component_folder }}
+    - ${{ inputs.version }}
