@@ -14,8 +14,8 @@ cd "${INPUT_COMPONENT_FOLDER}"
 yq --yaml-output \
    --arg version "${INPUT_VERSION}" \
     '.spec.source.helm.parameters[0].value |= $version' \
-    "mongo.yaml" | sponge "mongo.yaml"
+    "${INPUT_COMPONENT_NAME}.yaml" | sponge "${INPUT_COMPONENT_NAME}.yaml"
 
 echo "========== Updated YAML =========="
-cat mongo.yaml
+cat ${INPUT_COMPONENT_NAME}.yaml
 echo "========== Updated YAML =========="

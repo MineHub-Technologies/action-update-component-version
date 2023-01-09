@@ -5,6 +5,10 @@ inputs:
     description: 'Directory in destination repo for the component that requires a version update'
     required: true
     default: '.'
+  component_name:
+    description: 'Name of the component which is used to find the yaml file'
+    required: true
+    default: '.'
   version:
     description: 'The version it should update to'
     required: true
@@ -17,4 +21,5 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.component_folder }}
+    - ${{ inputs.component_name }}
     - ${{ inputs.version }}
