@@ -20,6 +20,6 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.component_folder }}
+    - ${{ inputs.organizations }}
     - ${{ inputs.component_name }}
     - ${{ inputs.version }}
