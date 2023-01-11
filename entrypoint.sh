@@ -9,7 +9,7 @@ git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 git config user.name "github-actions"
 git config user.email "github-actions@users.noreply.github.com"
 
-for organization in "${INPUT_ORGANIZATIONS}"; do
+for organization in $INPUT_ORGANIZATIONS; do
   echo $organization
 
   cd "${organization}/applications/${INPUT_COMPONENT_NAME}"
