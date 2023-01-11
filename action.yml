@@ -1,12 +1,12 @@
 name: "Update component version"
 description: "Updates the version of a specific component"
 inputs:
-  component_folder:
-    description: 'Directory in destination repo for the component that requires a version update'
-    required: true
-    default: '.'
   component_name:
     description: 'Name of the component which is used to find the yaml file'
+    required: true
+    default: '.'
+  organizations:
+    description: 'Organizations for which we need to update the version'
     required: true
     default: '.'
   version:
