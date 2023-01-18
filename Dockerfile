@@ -1,7 +1,7 @@
 FROM alpine:3.16.2
 
 RUN apk update && apk add git openssh-client; \
-    apk add --no-cache curl=7.83.1-r5 bash=5.1.16-r2 git=2.36.3-r0 py3-pip=22.1.1-r0 moreutils=0.67-r0
+    apk add --no-cache curl=7.83.1-r5 bash=5.1.16-r2 git=2.36.4-r0 py3-pip=22.1.1-r0 moreutils=0.67-r0
 
 RUN pip install 'yq==2.10.0'
 
