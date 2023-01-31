@@ -9,7 +9,18 @@ git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 git config user.name "github-actions"
 git config user.email "github-actions@users.noreply.github.com"
 
-for organization in $INPUT_ORGANIZATIONS; do
+getOrganizations() {
+  set -e
+
+  local listOfOrganizations
+  listOfOrganizations=$(ls "./" | grep -v 'idp\|README.md\|.gitignore')
+
+  echo "${listOfOrganizations}"
+}
+
+organizations=$(getOrganizations)
+
+for organization in $organizations; do
   echo $organization
 
   cd "${organization}/applications/${INPUT_COMPONENT_NAME}"
