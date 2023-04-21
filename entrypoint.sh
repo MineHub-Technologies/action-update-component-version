@@ -27,7 +27,7 @@ for organization in $organizations; do
 
   yq --yaml-output \
      --arg version "${INPUT_VERSION}" \
-      '.spec.source.helm.parameters[0].value |= $version' \
+      '(.spec.source.helm.parameters[] | select (.name == "image.tag") | .value) = $version'\
       "${INPUT_COMPONENT_NAME}.yaml" | sponge "${INPUT_COMPONENT_NAME}.yaml"
 
   echo "========== Updated ${organization} ${INPUT_COMPONENT_NAME} YAML =========="
