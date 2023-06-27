@@ -23,7 +23,12 @@ organizations=$(getOrganizations)
 for organization in $organizations; do
   echo $organization
 
-  cd "${organization}/applications/${INPUT_COMPONENT_NAME}"
+  if [ ! -d "${organization}/applications/${INPUT_COMPONENT_NAME}" ]; then
+    echo "========== ${organization} ${INPUT_COMPONENT_NAME} does not exist =========="
+    continue
+  fi
+
+  pushd "${organization}/applications/${INPUT_COMPONENT_NAME}"
 
   yq --yaml-output \
      --arg version "${INPUT_VERSION}" \
@@ -34,5 +39,5 @@ for organization in $organizations; do
   cat ${INPUT_COMPONENT_NAME}.yaml
   echo "========== Updated YAML =========="
 
-  cd ../../../
+  popd
 done
