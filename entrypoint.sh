@@ -13,7 +13,7 @@ getOrganizations() {
   set -e
 
   local listOfOrganizations
-  listOfOrganizations=$(ls "./" | grep -v 'idp\|README.md\|.gitignore')
+  listOfOrganizations=$(ls "./" | grep -v 'README.md\|.gitignore')
 
   echo "${listOfOrganizations}"
 }
