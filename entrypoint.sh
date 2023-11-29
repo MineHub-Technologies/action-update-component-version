@@ -10,10 +10,6 @@ git config user.name "github-actions"
 git config user.email "github-actions@users.noreply.github.com"
 
 getOrganizations() {
-  if $INPUT_ORGANIZATIONS; then
-    echo "${INPUT_ORGANIZATIONS}"
-    return
-  fi
   set -e
 
   local listOfOrganizations
