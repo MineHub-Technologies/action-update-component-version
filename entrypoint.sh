@@ -41,6 +41,9 @@ for organization in $organizations; do
   for component in "${component_array[@]}"; do
 
     if [ ! -d "${organization}/applications/${component}" ]; then
+        echo "========== ${organization} ${component} does not exist =========="
+        continue
+    fi
     pushd "${organization}/applications/${component}"
 
     yq --yaml-output \
